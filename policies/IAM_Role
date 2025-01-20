@@ -11,8 +11,8 @@
                 "s3:ListBucket"
             ],
             "Resource": [
-                "arn:aws:s3:::sports-analytics-data-lake",
-                "arn:aws:s3:::sports-analytics-data-lake/*"
+                "arn:aws:s3:::sports-analytics-data-lake-*",
+                "arn:aws:s3:::sports-analytics-data-lake-*/*"
             ]
         },
         {
@@ -39,17 +39,21 @@
             "Action": [
                 "athena:StartQueryExecution",
                 "athena:GetQueryExecution",
-                "athena:GetQueryResults"
+                "athena:GetQueryResults",
+                "athena:ListQueryExecutions"
             ],
             "Resource": "*"
-        },
-        {
+            },
+            {
             "Effect": "Allow",
             "Action": [
-                "s3:PutObject"
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:ListBucket"
             ],
             "Resource": [
-                "arn:aws:s3:::sports-analytics-data-lake/athena-results/*"
+                "arn:aws:s3:::sports-analytics-data-lake-*/athena-results/*",
+                "arn:aws:s3:::sports-analytics-data-lake-*/"
             ]
         }
     ]
